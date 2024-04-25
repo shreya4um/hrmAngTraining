@@ -1,0 +1,128 @@
+<!-- <div class="grid">
+    <div class="col-12">
+        <div class="card">
+            <h4>Employee Detail</h4>
+            <div class="grid">
+                <div class="col-6">
+                 <label> First Name</label>
+                 <input type="text">
+                </div>
+                <div class="col-6">
+                    <label> Last Name</label>
+                    <input type="text">
+                 </div>                
+            </div>
+
+            <div class="grid">
+                <div class="col-6">
+                 <label> Date of Birth</label>
+                 <input type="text">
+                </div>
+                <div class="col-6">
+                    <label> Last Name</label>
+                    <input type="text">
+                 </div>                
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- employee-data-entry.component.html -->
+<div class="grid">
+    <div class="col-12">
+      <div class="card form-card">
+  
+        <form [formGroup]="formGroup">
+  
+          <div class="p-field">
+            <div class="grid">
+              <div class="col-6">
+                <label for="firstName">First Name</label>
+                <input type="text" pInputText formControlName="firstName" />
+              </div>
+              <div class="col-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" pInputText formControlName="lastName" />
+              </div>
+            </div>
+          </div>
+  
+          <div class="p-field">
+            <div class="grid">
+              <div class="col-6">
+                <label for="email">Email</label>
+                <input id="email" type="email" pInputText formControlName="email" required>
+              </div>
+  
+              <div class="col-6">
+                <label for="dob">Date of Birth</label>
+                <input type="date" pInputText formControlName="dateOfBirth" required>
+              </div>
+            </div>
+          </div>
+  
+  
+          <div class="p-field">
+            <div class="grid">
+              <div class="col-6">
+                <label for="Gender">Gender</label>
+                <p-dropdown formControlName="selectedGender" [options]="gender" optionLabel="name"
+                  placeholder="Select a Gender ">
+  
+                </p-dropdown>
+              </div>
+  
+              <div class="col-6">
+                <label for="phoneNumber">Phone Number</label>
+                <input id="phoneNumber" type="tel" pInputText formControlName="phoneNumber">
+              </div>
+            </div>
+          </div>
+  
+          <div class="p-field">
+            <div class="grid">
+              <div class="col-6">
+                <label for="address">Address</label>
+                <input id="address" type="text" pInputText formControlName="address">
+              </div>
+  
+              <div class="col-6">
+                <label for="department">Department</label>
+                <input id="department" type="text" pInputText formControlName="department">
+              </div>
+            </div>
+          </div>
+  
+  
+          <div class="p-field">
+            <div class="grid">
+              <div class="col-6">
+                <label for="position">Position/Job Title</label>
+                <input id="position" type="text" pInputText formControlName="position">
+              </div>
+  
+              <div class="col-6">
+                <label for="Attendance">Attendance</label>
+                <p-dropdown formControlName="selectedAttendance" [options]="attendance" optionLabel="name"
+                  placeholder=" Select a attendance ">
+  
+                </p-dropdown>
+  
+  
+  
+              </div>
+            </div>
+          </div>
+  
+  
+  
+  
+  
+  
+  
+          <!-- Add more fields as needed -->
+  
+          <button type="submit" pButton label="Submit"></button>
+        </form>
+      </div>
+    </div>
+  </div>
