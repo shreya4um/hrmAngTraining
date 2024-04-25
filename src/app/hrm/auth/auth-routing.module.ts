@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'authlogin', component: LoginComponent },
 
 ];
+\\\\\ adde comments
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
