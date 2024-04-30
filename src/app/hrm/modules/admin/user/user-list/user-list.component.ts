@@ -9,14 +9,14 @@ import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dy
 import { UsersListEditComponent } from '../users-list-edit/users-list-edit.component';
 
 @Component({
-  selector: 'app-user-list',
-  standalone: false,
-  templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.scss'
+    selector: 'app-user-list',
+    standalone: false,
+    templateUrl: './user-list.component.html',
+    styleUrl: './user-list.component.scss'
 })
 
 
-  export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit {
 
     productDialog: boolean = false;
 
@@ -40,11 +40,11 @@ import { UsersListEditComponent } from '../users-list-edit/users-list-edit.compo
     popoverButton: EventTarget;
     ref: DynamicDialogRef | undefined;
 
-    isAddUpdate:boolean = false;
-  
+    isAddUpdate: boolean = false;
 
+    testBhuvi = "Hello";
 
-    constructor(private productService: ProductService, private messageService: MessageService,private router: Router,
+    constructor(private productService: ProductService, private messageService: MessageService, private router: Router,
         // public dialogService: DialogService
 
     ) { }
@@ -86,23 +86,23 @@ import { UsersListEditComponent } from '../users-list-edit/users-list-edit.compo
     //         console.log(res)
 
     //         return
-         
+
     //     });
 
-       
+
     // }
 
 
-//     openNew(){
-//       this.router.navigate(['/admin/users/add-update-user']);
-//  }
+    //     openNew(){
+    //       this.router.navigate(['/admin/users/add-update-user']);
+    //  }
 
 
-// openNewEmplyee(){
-//  this.product = {};
-//         this.submitted = false; 
-//         this.productDialog = true;
-//     }
+    // openNewEmplyee(){
+    //  this.product = {};
+    //         this.submitted = false; 
+    //         this.productDialog = true;
+    //     }
 
 
     deleteSelectedProducts() {
@@ -126,7 +126,7 @@ import { UsersListEditComponent } from '../users-list-edit/users-list-edit.compo
     //         },
     //     });
 
-       
+
     // }
 
 
@@ -148,8 +148,8 @@ import { UsersListEditComponent } from '../users-list-edit/users-list-edit.compo
         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
         this.product = {};
     }
-  
-    
+
+
     hideDialog() {
         this.productDialog = false;
         this.submitted = false;
@@ -208,9 +208,13 @@ import { UsersListEditComponent } from '../users-list-edit/users-list-edit.compo
         table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
     }
 
-    addUpdateNewEmployye(){
+    addUpdateNewEmployye() {
 
         this.isAddUpdate = true;
 
+    }
+
+    getData(formData:any) {
+        console.log(formData, "Bhuvi")
     }
 }

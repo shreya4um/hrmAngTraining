@@ -34,7 +34,6 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
   imports: [
     CommonModule,
     UserRoutingModule,
-    CommonModule,
     TableModule,
     FileUploadModule,
     FormsModule,
@@ -50,7 +49,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     InputNumberModule,
     DialogModule,
     ReactiveFormsModule ,
-    DynamicDialogModule
+    DynamicDialogModule,
 
 
   ],

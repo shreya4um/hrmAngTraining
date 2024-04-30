@@ -1,7 +1,7 @@
 
 
 
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
@@ -22,7 +22,10 @@ interface Attendance {
 })
 export class AddUpdateUserComponent implements OnInit {
 
-  @Output() newItemEvent = new EventEmitter<any>();
+  @Input() data:any;
+
+  @Output() userformData = new EventEmitter<any>();
+
 
   formGroup: FormGroup;
   gender: Gender[] = [];
@@ -33,12 +36,16 @@ export class AddUpdateUserComponent implements OnInit {
     private configService: DynamicDialogConfig,
     private dialogService: DialogService,
     public ref: DynamicDialogRef
-  ) { }
+  ) { 
+    console.log("this.data")
+  }
 
   ngOnInit() {
     this.initializeForm();
     this.loadGenderOptions();
     this.loadAttendanceOptions();
+
+    console.log(this.data, "Bhuvi")
   }
 
   initializeForm() {
@@ -75,8 +82,8 @@ export class AddUpdateUserComponent implements OnInit {
   AddUpdateUser() {
     if (this.formGroup.valid) {
       const userData = this.formGroup.value;
-      this.newItemEvent.emit(userData);
-      this.ref.close(); // Close the dialog after emitting data
+      this.userformData.emit(userData);
+    //  this.ref.close(); // Close the dialog after emitting data
     } else {
       // Handle form validation errors
       Object.keys(this.formGroup.controls).forEach(key => {
