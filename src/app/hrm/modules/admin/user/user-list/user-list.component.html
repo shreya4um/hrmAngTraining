@@ -6,7 +6,7 @@
                 <ng-template pTemplate="left">
                     <div class="my-2">
                     
-                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNewEmplyee()" ></button>
+                        <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="addUpdateNewEmployye()" ></button>
                         <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
                     </div>
                 </ng-template>
@@ -122,27 +122,26 @@
             </p-table>
         </div>
 
-<!--            
-        <p-dialog [(visible)]="openNewEmplyee" [style]="{width: '450px'}" header="Employee Details" [modal]="true" class="p-fluid">
-            <ng-template pTemplate="content">
+           
+        <p-dialog [(visible)]="isAddUpdate" [style]="{width: '450px'}" header="Employee Details" [modal]="true" class="p-fluid">
+           
                 <app-add-update-user></app-add-update-user>
 
-                </ng-template>
-                </p-dialog> -->
+                </p-dialog>
 
 
 
-
+<!-- 
         <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Employee Details" [modal]="true" class="p-fluid">
             <ng-template pTemplate="content">
-                <app-users-list-edit></app-users-list-edit>
+                <app-users-list-edit [data]="data" (test)="test($event)"></app-users-list-edit>
             </ng-template>
 
             <ng-template pTemplate="footer">
                 <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
                 <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
             </ng-template>
-        </p-dialog>
+        </p-dialog> -->
 
 
 

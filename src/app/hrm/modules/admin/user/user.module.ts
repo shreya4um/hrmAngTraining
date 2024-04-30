@@ -20,7 +20,7 @@ import { DialogModule } from 'primeng/dialog';
 import { MessageService } from 'primeng/api';
 import { AddUpdateUserComponent } from './add-update-user/add-update-user.component';
 import { UsersListEditComponent } from './users-list-edit/users-list-edit.component';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 
@@ -56,7 +56,9 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
   ],
   providers: [
     MessageService,
-    DialogService
+    DialogService,
+    DynamicDialogConfig,
+    DynamicDialogRef
   ],
 
 })

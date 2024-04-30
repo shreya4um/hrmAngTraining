@@ -6,6 +6,7 @@ import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
 import { AddUpdateUserComponent } from '../add-update-user/add-update-user.component';
 import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { UsersListEditComponent } from '../users-list-edit/users-list-edit.component';
 
 @Component({
   selector: 'app-user-list',
@@ -38,11 +39,13 @@ import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dy
     rowsPerPageOptions = [5, 10, 20];
     popoverButton: EventTarget;
     ref: DynamicDialogRef | undefined;
+
+    isAddUpdate:boolean = false;
   
 
 
     constructor(private productService: ProductService, private messageService: MessageService,private router: Router,
-        public dialogService: DialogService
+        // public dialogService: DialogService
 
     ) { }
 
@@ -64,19 +67,30 @@ import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dy
         ];
     }
 
-    openNewEmplyee() {
-        this.ref = this.dialogService.open(AddUpdateUserComponent, {
-            header: 'Select a Product',
-            width: '50vw',
-            modal: true,
-            breakpoints: {
-                '960px': '75vw',
-                '640px': '90vw'
-            },
-        });
+    // openNewEmplyee() {
+    //     this.ref = this.dialogService.open(AddUpdateUserComponent, {
+    //         header: 'Select a Product',
+    //         width: '50vw',
+    //         modal: true,
+    //         breakpoints: {
+    //             '960px': '75vw',
+    //             '640px': '90vw'
+    //         },
+    //         data:{
+    //             data: "Sherya"
+    //         }
+    //     });
+
+    //     this.ref.onClose.subscribe((res: any) => {
+
+    //         console.log(res)
+
+    //         return
+         
+    //     });
 
        
-    }
+    // }
 
 
 //     openNew(){
@@ -85,8 +99,10 @@ import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dy
 
 
 // openNewEmplyee(){
-// this.popoverButton = this.popoverButton ? null : event.currentTarget;
-// }
+//  this.product = {};
+//         this.submitted = false; 
+//         this.productDialog = true;
+//     }
 
 
     deleteSelectedProducts() {
@@ -97,6 +113,22 @@ import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dy
         this.product = { ...product };
         this.productDialog = true;
     }
+
+
+    // editProduct() {
+    //     this.ref = this.dialogService.open(UsersListEditComponent, {
+    //         header: 'Select a Product',
+    //         width: '50vw',
+    //         modal: true,
+    //         breakpoints: {
+    //             '960px': '75vw',
+    //             '640px': '90vw'
+    //         },
+    //     });
+
+       
+    // }
+
 
     deleteProduct(product: Product) {
         this.deleteProductDialog = true;
@@ -174,5 +206,11 @@ import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dy
 
     onGlobalFilter(table: Table, event: Event) {
         table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
+    }
+
+    addUpdateNewEmployye(){
+
+        this.isAddUpdate = true;
+
     }
 }
