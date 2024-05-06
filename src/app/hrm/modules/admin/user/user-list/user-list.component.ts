@@ -45,7 +45,7 @@ export class UserListComponent implements OnInit {
     testBhuvi = "Hello";
 
     constructor(private productService: ProductService, private messageService: MessageService, private router: Router,
-        // public dialogService: DialogService
+         public dialogService: DialogService
 
     ) { }
 
@@ -67,30 +67,30 @@ export class UserListComponent implements OnInit {
         ];
     }
 
-    // openNewEmplyee() {
-    //     this.ref = this.dialogService.open(AddUpdateUserComponent, {
-    //         header: 'Select a Product',
-    //         width: '50vw',
-    //         modal: true,
-    //         breakpoints: {
-    //             '960px': '75vw',
-    //             '640px': '90vw'
-    //         },
-    //         data:{
-    //             data: "Sherya"
-    //         }
-    //     });
+    addUpdateNewEmployye() {
+        this.ref = this.dialogService.open(AddUpdateUserComponent, {
+            header: 'Select a Product',
+            width: '50vw',
+            modal: true,
+            breakpoints: {
+                '960px': '75vw',
+                '640px': '90vw'
+            },
+            data:{
+                data: "Sherya"
+            }
+        });
 
-    //     this.ref.onClose.subscribe((res: any) => {
+        this.ref.onClose.subscribe((res: any) => {
 
-    //         console.log(res)
+            console.log(res)
 
-    //         return
+            return
 
-    //     });
+        });
 
 
-    // }
+    }
 
 
     //     openNew(){
@@ -208,11 +208,11 @@ export class UserListComponent implements OnInit {
         table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
     }
 
-    addUpdateNewEmployye() {
+    // addUpdateNewEmployye() {
 
-        this.isAddUpdate = true;
+    //     this.isAddUpdate = true;
 
-    }
+    // }
 
     getData(formData:any) {
         console.log(formData, "Bhuvi")

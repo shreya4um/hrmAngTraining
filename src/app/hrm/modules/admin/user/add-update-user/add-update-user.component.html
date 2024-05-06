@@ -1,47 +1,33 @@
-<!-- <div class="grid">
-    <div class="col-12">
-        <div class="card">
-            <h4>Employee Detail</h4>
-            <div class="grid">
-                <div class="col-6">
-                 <label> First Name</label>
-                 <input type="text">
-                </div>
-                <div class="col-6">
-                    <label> Last Name</label>
-                    <input type="text">
-                 </div>                
-            </div>
 
-            <div class="grid">
-                <div class="col-6">
-                 <label> Date of Birth</label>
-                 <input type="text">
-                </div>
-                <div class="col-6">
-                    <label> Last Name</label>
-                    <input type="text">
-                 </div>                
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- employee-data-entry.component.html -->
 <div class="grid">
   <div class="col-12">
     <div class="card form-card">
 
-      <form [formGroup]="formGroup">
-
+  
+        <form       [formGroup]="formGroup" (ngSubmit)="AddUpdateUser()"> 
         <div class="p-field">
           <div class="grid">
             <div class="col-6">
               <label for="firstName">First Name</label>
               <input type="text" pInputText formControlName="firstName" />
+              <div *ngIf="f['firstName'].errors && (submitted || f['firstName'].touched)">
+                <span *ngIf="f['firstName'].hasError('required')" class="text-danger">FirstName is required</span>
+                <span *ngIf="f['firstName'].errors['pattern']" class="text-danger">Only alphabets are allowed</span>
+
+            </div>
+
+
             </div>
             <div class="col-6">
               <label for="lastName">Last Name</label>
               <input type="text" pInputText formControlName="lastName" />
+
+              <div *ngIf="f['lastName'].errors && (submitted || f['lastName'].touched)">
+                <span *ngIf="f['lastName'].hasError('required')" class="text-danger">LastName is required</span>
+                <span *ngIf="f['lastName'].errors['pattern']" class="text-danger">Only alphabets are allowed</span>
+            </div>
+
+
             </div>
           </div>
         </div>
@@ -51,29 +37,58 @@
             <div class="col-6">
               <label for="email">Email</label>
               <input id="email" type="email" pInputText formControlName="email" required>
-            </div>
+              <div *ngIf="f['email'].errors && (submitted || f['email'].touched)">
+                <span *ngIf="f['email'].hasError('required')" class="text-danger">Email is required</span>
+                <span *ngIf="f['email'].errors['pattern']" class="text-danger">Invalid email address</span>
+
+
+
+         </div>
+         </div>
 
             <div class="col-6">
               <label for="dob">Date of Birth</label>
               <input type="date" pInputText formControlName="dateOfBirth" required>
+
+              <div *ngIf="f['dateOfBirth'].errors && (submitted || f['dateOfBirth'].touched)">
+                <span *ngIf="f['dateOfBirth'].hasError('required')" class="text-danger">DateOfBirth is required</span>
             </div>
           </div>
+        
+          </div>
         </div>
+     
 
+ 
 
         <div class="p-field">
           <div class="grid">
             <div class="col-6">
               <label for="Gender">Gender</label>
-              <p-dropdown formControlName="selectedGender" [options]="gender" optionLabel="name"
-                placeholder="Select a Gender ">
-
+              <p-dropdown formControlName="selectedGender" [options]="gender" optionlabelValue="value" optionLabel="name" placeholder="select gender">
+               
+             
               </p-dropdown>
+              <div *ngIf="f['selectedGender'].errors && (submitted || f['selectedGender'].touched)">
+                <span *ngIf="f['selectedGender'].hasError('required')" class="text-danger">selectedGender is required</span>
+            </div>
             </div>
 
             <div class="col-6">
               <label for="phoneNumber">Phone Number</label>
               <input id="phoneNumber" type="tel" pInputText formControlName="phoneNumber">
+
+              <div *ngIf="f['phoneNumber'].errors && (submitted || f['phoneNumber'].touched)">
+                <span *ngIf="f['phoneNumber'].hasError('required')" class="text-danger">Mobile number is
+                  required</span>
+              <span *ngIf="f['phoneNumber'].errors['minlength']" class="text-danger">Only 10 digits are
+                  allowed</span>
+              <span *ngIf="f['phoneNumber'].errors['maxlength']" class="text-danger">Only 10 digits are
+                  allowed</span>
+              <span *ngIf="f['phoneNumber'].errors['pattern']" class="text-danger">Only digits are
+                  allowed</span>
+            </div>
+
             </div>
           </div>
         </div>
@@ -83,11 +98,21 @@
             <div class="col-6">
               <label for="address">Address</label>
               <input id="address" type="text" pInputText formControlName="address">
+
+              <div *ngIf="f['address'].errors && (submitted || f['address'].touched)">
+                <span *ngIf="f['address'].hasError('required')" class="text-danger">Address is required</span>
+            </div>
             </div>
 
             <div class="col-6">
               <label for="department">Department</label>
               <input id="department" type="text" pInputText formControlName="department">
+
+              <div *ngIf="f['department'].errors && (submitted || f['department'].touched)">
+                <span *ngIf="f['department'].hasError('required')" class="text-danger">Department is required</span>
+                <span *ngIf="f['department'].errors['pattern']" class="text-danger">string are required</span>
+            </div>
+
             </div>
           </div>
         </div>
@@ -98,31 +123,28 @@
             <div class="col-6">
               <label for="position">Position/Job Title</label>
               <input id="position" type="text" pInputText formControlName="position">
+
+              <div *ngIf="f['position'].errors && (submitted || f['position'].touched)">
+                <span *ngIf="f['position'].hasError('required')" class="text-danger">Position is required</span>
+            </div>
+
             </div>
 
             <div class="col-6">
               <label for="Attendance">Attendance</label>
-              <p-dropdown formControlName="selectedAttendance" [options]="attendance" optionLabel="name"
-                placeholder=" Select a attendance ">
+              <p-dropdown formControlName="selectedAttendance"  [options]="attendance" optionlabelName="name"  optionLabel="name" placeholder=" Select a attendance ">
+                      
 
               </p-dropdown>
+              <div *ngIf="f['selectedAttendance'].errors && (submitted || f['selectedAttendance'].touched)"  class="text-danger">
+                <span *ngIf="f['selectedAttendance'].hasError('required')" class="text-danger">password is required</span>
 
-
+            </div> 
 
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-        <!-- Add more fields as needed -->
-
-   
-        <button type="submit" pButton label="Submit" (click)="AddUpdateUser()"></button>
+ <button type="submit" pButton label="Submit" (click)="AddUpdateUser()"></button>
       </form>
     </div>
   </div>

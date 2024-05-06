@@ -5,15 +5,17 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
-interface Gender {
-  name: string;
-  value: string;
-}
+// interface Gender {
+//   name: string;
+//   value: string;
+// }
 
-interface Attendance {
-  name: string;
-  value: string;
-}
+// interface Attendance {
+//   name: string;
+//   value: string;
+// }
+
+
 
 @Component({
   selector: 'app-add-update-user',
@@ -22,14 +24,43 @@ interface Attendance {
 })
 export class AddUpdateUserComponent implements OnInit {
 
+
+
+
+  gender=[
+    {
+      name: 'Select gender', value:null
+    },
+    {
+      name: 'Female', value:'female'
+    },
+    {
+      name: 'Male', value:'male'
+    }
+
+  ]
+
+  
+  attendance =[
+    
+    {
+      name: 'Apsent', value:'apsent'
+    },
+    {
+      name: 'Present', value:'present'
+    }
+
+  ]
+
   @Input() data:any;
 
   @Output() userformData = new EventEmitter<any>();
 
 
   formGroup: FormGroup;
-  gender: Gender[] = [];
-  attendance: Attendance[] = [];
+  submitted: boolean;
+  //  gender: Gender[] = [];
+  // attendance: Attendance[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,13 +73,16 @@ export class AddUpdateUserComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
-    this.loadGenderOptions();
-    this.loadAttendanceOptions();
+    // this.loadGenderOptions();
+    // this.loadAttendanceOptions();
 
     console.log(this.data, "Bhuvi")
   }
 
+
   initializeForm() {
+
+
     this.formGroup = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -63,26 +97,20 @@ export class AddUpdateUserComponent implements OnInit {
     });
   }
 
-  loadGenderOptions() {
-    // Assuming you fetch gender options from somewhere (e.g., API)
-    this.gender = [
-      { name: 'Male', value: 'male' },
-      { name: 'Female', value: 'female' }
-    ];
+
+  get f() {
+    return this.formGroup.controls
   }
 
-  loadAttendanceOptions() {
-    // Assuming you fetch attendance options from somewhere (e.g., API)
-    this.attendance = [
-      { name: 'Present', value: 'present' },
-      { name: 'Absent', value: 'absent' }
-    ];
-  }
 
   AddUpdateUser() {
+
+    this.submitted = true;
     if (this.formGroup.valid) {
       const userData = this.formGroup.value;
-      this.userformData.emit(userData);
+      
+      // this.userformData.emit(userData);
+
     //  this.ref.close(); // Close the dialog after emitting data
     } else {
       // Handle form validation errors
@@ -91,4 +119,9 @@ export class AddUpdateUserComponent implements OnInit {
       });
     }
   }
+
+
+
+
+  
 }
