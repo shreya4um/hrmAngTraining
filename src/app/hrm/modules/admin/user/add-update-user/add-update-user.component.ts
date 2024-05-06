@@ -28,9 +28,7 @@ export class AddUpdateUserComponent implements OnInit {
 
 
   gender=[
-    {
-      name: 'Select gender', value:null
-    },
+   
     {
       name: 'Female', value:'female'
     },
@@ -84,14 +82,17 @@ export class AddUpdateUserComponent implements OnInit {
 
 
     this.formGroup = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+    
+      firstName:['',[Validators.required,Validators.pattern('^[a-zA-Z]*$')]],
+
+
+      lastName: ['', [Validators.required,Validators.pattern('^[a-zA-Z]*$')]],
+      email: ['', [Validators.required,Validators.pattern(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)]],
       dateOfBirth: ['', Validators.required],
       selectedGender: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: ['', [Validators.required,Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]],
       address: ['', Validators.required],
-      department: ['', Validators.required],
+      department: ['', [Validators.required,Validators.pattern('^[a-zA-Z]*$')]],
       position: ['', Validators.required],
       selectedAttendance: ['', Validators.required]
     });
