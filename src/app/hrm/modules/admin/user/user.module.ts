@@ -22,6 +22,7 @@ import { AddUpdateUserComponent } from './add-update-user/add-update-user.compon
 import { UsersListEditComponent } from './users-list-edit/users-list-edit.component';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -50,7 +51,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     DialogModule,
     ReactiveFormsModule ,
     DynamicDialogModule,
-
+HttpClientModule
 
   ],
   providers: [

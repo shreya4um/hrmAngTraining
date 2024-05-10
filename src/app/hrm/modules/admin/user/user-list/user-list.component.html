@@ -22,7 +22,9 @@
                     </ng-template>
                 </p-toolbar>
     
-                <p-table #dt [value]="products" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [(selection)]="selectedProducts" selectionMode="multiple" [rowHover]="true" dataKey="id">
+                <p-table #dt [value]="products" [columns]="cols" responsiveLayout="scroll" [rows]="10" [globalFilterFields]="['name','country.name','representative.name','status']" 
+                [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+                [(selection)]="selectedProducts" selectionMode="multiple" [rowHover]="true" dataKey="id">
                    
                     <ng-template pTemplate="caption">
                         <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
@@ -50,7 +52,7 @@
                             <th pSortableColumn="inventoryStatus">Department<p-sortIcon field="department"></p-sortIcon></th>
                             <th pSortableColumn="inventoryStatus">Position/Job Title <p-sortIcon field="position"></p-sortIcon></th>
     
-                            <th pSortableColumn="inventoryStatus">Attendance <p-sortIcon field="selectedAttendance"></p-sortIcon></th>
+                             <th pSortableColumn="inventoryStatus">Attendance <p-sortIcon field="selectedAttendance"></p-sortIcon></th>
     
                             <th>     </th>
                         </tr>

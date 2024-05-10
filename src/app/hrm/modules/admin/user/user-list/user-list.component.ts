@@ -7,6 +7,7 @@ import { ProductService } from 'src/app/demo/service/product.service';
 import { AddUpdateUserComponent } from '../add-update-user/add-update-user.component';
 import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { UsersListEditComponent } from '../users-list-edit/users-list-edit.component';
+import { UserDataService } from '../services/user-data.service';
 
 @Component({
     selector: 'app-user-list',
@@ -45,7 +46,7 @@ export class UserListComponent implements OnInit {
     testBhuvi = "Hello";
 
     constructor(private productService: ProductService, private messageService: MessageService, private router: Router,
-         public dialogService: DialogService
+         public dialogService: DialogService, private userData:UserDataService
 
     ) { }
 
