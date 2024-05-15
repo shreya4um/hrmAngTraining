@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PathLocationStrategy, LocationStrategy } from '@angular/common';
+import { PathLocationStrategy, LocationStrategy, CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
@@ -11,12 +11,15 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule],
+    imports: [AppRoutingModule, AppLayoutModule,ConfirmDialogModule,ReactiveFormsModule,CommonModule],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService,
@@ -26,6 +29,7 @@ import { PhotoService } from './demo/service/photo.service';
         NodeService,
         PhotoService,
         ProductService,
+        ConfirmationService
     ],
     bootstrap: [AppComponent],
 })

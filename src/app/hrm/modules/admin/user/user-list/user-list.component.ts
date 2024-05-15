@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Product } from 'src/app/demo/api/product';
 import { ProductService } from 'src/app/demo/service/product.service';
@@ -46,7 +46,7 @@ export class UserListComponent implements OnInit {
     testBhuvi = "Hello";
 
     constructor(private productService: ProductService, private messageService: MessageService, private router: Router,
-         public dialogService: DialogService, private userData:UserDataService
+         public dialogService: DialogService, private userData:UserDataService,private confirmationService:ConfirmationService
 
     ) { }
 
@@ -92,6 +92,46 @@ export class UserListComponent implements OnInit {
 
 
     }
+    
+
+deleteProduct1() {
+    this.confirmationService.confirm({
+        message: 'Are you sure that you want to proceed? shreya',
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+           
+            this.acceptFunc();
+        },
+        reject: () => {
+       
+            this.rejectFunc();
+        }
+    });
+}
+acceptFunc() {
+    this.messageService.add({severity:'success', summary:'Success', detail:'Product deleted successfully.'});
+  
+}
+
+rejectFunc() {
+    this.messageService.add({severity:'info', summary:'Info', detail:'Deletion canceled.'});
+   
+}
+// acceptFunc() {
+
+//     console.log('Product deleted successfully.');
+
+// }
+
+// rejectFunc() {
+
+//     console.log('Deletion canceled.');
+ 
+// }
+
+
+
 
 
     //     openNew(){
