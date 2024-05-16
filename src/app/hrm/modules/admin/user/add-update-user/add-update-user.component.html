@@ -1,10 +1,110 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card form-card">
+      <form [formGroup]="formGroup">
 
+        <div class="p-field">
+          <div class="grid">
+            <div class="col-12">
+              <label for="name">Name</label>
+              <input type="text" pInputText id="name" formControlName="name">
+              <div *ngIf="f['name'].errors && (submitted || f['name'].touched)">
+                <span *ngIf="f['name'].hasError('required')" class="text-danger">Name is required</span>
+             
+
+            </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="p-field">
+          <div class="grid">
+            <div class="col-12 description">
+              <label for="description">Description</label>
+              <textarea class="description" id="description" pInputTextarea formControlName="description"></textarea>
+              <div *ngIf="f['description'].errors && (submitted || f['description'].touched)">
+                <span *ngIf="f['description'].hasError('required')" class="text-danger">Description is required</span>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Inventory Status Dropdown -->
+        <div class="p-field">
+          <div class="grid">
+            <div class="col-6">
+  <label for="status">Inventory Status</label>
+          <p-dropdown class="description" formControlName="inventoryStatus" [options]="statuses" optionlabelValue="value" optionLabel="name" placeholder="select "> </p-dropdown>
+            <div *ngIf="f['inventoryStatus'].errors && (submitted || f['inventoryStatus'].touched)">
+                  <span *ngIf="f['inventoryStatus'].hasError('required')" class="text-danger">Inventory status is
+                    required</span></div>
+                  
+         </div>
+      
+         <div class="col-6">
+         <label for="category">Category</label>
+                <p-dropdown class="description" formControlName="category" [options]="category" optionlabelValue="value" optionLabel="name" placeholder="select "> </p-dropdown>
+                 <div *ngIf="f['category'].errors && (submitted || f['category'].touched)">
+                  <span *ngIf="f['category'].hasError('required')" class="text-danger">Category status is
+                    required</span>
+
+                </div>
+              </div>
+            
+           </div>
+        </div>
+ 
+
+
+        <div class="p-field">
+          <div class="grid">
+            <div class="col-6">
+               <label for="price">Price</label>
+              <p-inputNumber class="description" id="price" mode="currency" currency="USD" locale="en-US"
+                formControlName="price"></p-inputNumber>
+              <div *ngIf="f['price'].errors && (submitted || f['price'].touched)">
+                <span *ngIf="f['price'].hasError('required')" class="text-danger">Price is required</span>
+            </div>
+            </div>
+
+            <div class="col-6">
+              <label for="quantity">Quantity</label>
+              <p-inputNumber class="description" id="quantity" formControlName="quantity"></p-inputNumber>
+              <div *ngIf="f['quantity'].errors && (submitted || f['quantity'].touched)">
+                <span *ngIf="f['quantity'].hasError('required')" class="text-danger">Department is required</span>
+               
+            </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <!-- <button type="submit" pButton label="Submit" (click)="AddUpdateUser()"></button> -->
+
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" ></button>
+            <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="AddUpdateUser()"></button>
+      </form>
+    </div>
+
+  </div>
+  </div>
+
+
+
+
+
+  <!-- 
+    
 <div class="grid">
   <div class="col-12">
     <div class="card form-card">
 
   
-        <form       [formGroup]="formGroup" (ngSubmit)="AddUpdateUser()"> 
+        <form [formGroup]="formGroup"> 
         <div class="p-field">
           <div class="grid">
             <div class="col-6">
@@ -149,7 +249,4 @@
     </div>
   </div>
 </div>
-  
-  
-  
- 
+   -->

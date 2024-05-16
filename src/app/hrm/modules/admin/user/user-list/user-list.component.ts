@@ -46,12 +46,17 @@ export class UserListComponent implements OnInit {
     testBhuvi = "Hello";
 
     constructor(private productService: ProductService, private messageService: MessageService, private router: Router,
-         public dialogService: DialogService, private userData:UserDataService,private confirmationService:ConfirmationService
+        public dialogService: DialogService, private userData: UserDataService, private confirmationService: ConfirmationService
 
-    ) { }
+    ) {
+
+        this.getAllProducts()
+
+
+    }
 
     ngOnInit() {
-        this.productService.getProducts().then(data => this.products = data);
+
 
         this.cols = [
             { field: 'product', header: 'Product' },
@@ -66,6 +71,14 @@ export class UserListComponent implements OnInit {
             { label: 'LOWSTOCK', value: 'lowstock' },
             { label: 'OUTOFSTOCK', value: 'outofstock' }
         ];
+        this.cols.push({ field: 'newField', header: 'New Header' });
+    }
+
+    getAllProducts() {
+        this.productService.getProducts().then(data => {
+            this.products = data
+            console.log(this.products)
+        });
     }
 
     addUpdateNewEmployye() {
@@ -77,7 +90,7 @@ export class UserListComponent implements OnInit {
                 '960px': '75vw',
                 '640px': '90vw'
             },
-            data:{
+            data: {
                 data: "Sherya"
             }
         });
@@ -92,43 +105,49 @@ export class UserListComponent implements OnInit {
 
 
     }
-    
 
-deleteProduct1() {
-    this.confirmationService.confirm({
-        message: 'Are you sure that you want to proceed? shreya',
-        header: 'Confirmation',
-        icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-           
-            this.acceptFunc();
-        },
-        reject: () => {
-       
-            this.rejectFunc();
-        }
-    });
-}
-acceptFunc() {
-    this.messageService.add({severity:'success', summary:'Success', detail:'Product deleted successfully.'});
-  
-}
+    openNew() {
+        this.product = {};
+        this.submitted = false;
+        this.productDialog = true;
+    }
 
-rejectFunc() {
-    this.messageService.add({severity:'info', summary:'Info', detail:'Deletion canceled.'});
-   
-}
-// acceptFunc() {
 
-//     console.log('Product deleted successfully.');
+    deleteProduct1() {
+        this.confirmationService.confirm({
+            message: 'Are you sure that you want to proceed? shreya',
+            header: 'Confirmation',
+            icon: 'pi pi-exclamation-triangle',
+            accept: () => {
 
-// }
+                this.acceptFunc();
+            },
+            reject: () => {
 
-// rejectFunc() {
+                this.rejectFunc();
+            }
+        });
+    }
+    acceptFunc() {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product deleted successfully.' });
 
-//     console.log('Deletion canceled.');
- 
-// }
+    }
+
+    rejectFunc() {
+        this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Deletion canceled.' });
+
+    }
+    // acceptFunc() {
+
+    //     console.log('Product deleted successfully.');
+
+    // }
+
+    // rejectFunc() {
+
+    //     console.log('Deletion canceled.');
+
+    // }
 
 
 
@@ -255,7 +274,7 @@ rejectFunc() {
 
     // }
 
-    getData(formData:any) {
+    getData(formData: any) {
         console.log(formData, "Bhuvi")
     }
 }
